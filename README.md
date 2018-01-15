@@ -1,4 +1,4 @@
-# Rotary library for Arduino
+# 3 speed Rotary library for Arduino
 
 This is a three speed rotary library for Arduino. Half and full step rotaries 
 are supported.
