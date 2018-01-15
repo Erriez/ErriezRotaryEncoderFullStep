@@ -9,7 +9,7 @@ Connect the two rotary pins to the digital pins of an Arduino board.
 A third rotary button pin is not used in the Rotary library.
 
 ### Rotary - Arduino UNO example
-![alt text](https://github.com/Erriez/ArduinoLibraryRotary/extras/FrtizingRotary.png "3-pin Rotary Arduino connection")
+![alt text](https://raw.githubusercontent.com/Erriez/ArduinoLibraryRotary/master/extras/FritzingRotary.png "3-pin Rotary Arduino connection")
 
 
 ## Examples
