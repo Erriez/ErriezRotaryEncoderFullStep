@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-/* Rotary full step example
+/* Rotary full step basic example
  * Source: https://github.com/Erriez/ArduinoLibraryRotary
  */
 
@@ -36,34 +36,22 @@
 // Initialize full step rotary
 Rotary rotary(ROTARY_PIN1, ROTARY_PIN2, FullStep);
 
-// Global variables
-int count = 0;
-int countLast = 0;
-
 void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
-  Serial.println(F("Rotary full step example"));
+  Serial.println(F("Rotary full step basic example"));
 }
 
 void loop()
 {
-  // Read rotary state
-  count += rotary.read();
+  int rotaryState;
 
-  // Limit count to a minimum and maximum value
-  if (count > 100) {
-    count = 100;
-  }
-  if (count < 0) {
-    count = 0;
-  }
+  // Read rotary state
+  rotaryState = rotary.read();
 
   // Print count value when rotary changed
-  if (countLast != count) {
-    countLast = count;
-    Serial.print(F("Count: "));
-    Serial.println(count);
+  if ((rotaryState > 0) || (rotaryState < 0)) {
+    Serial.println(rotaryState);
   }
 }

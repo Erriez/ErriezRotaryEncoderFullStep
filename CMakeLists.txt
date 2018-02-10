@@ -8,18 +8,18 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 set(PROJECT_NAME    ArduinoLibraryRotary)
 
 # Library directory
-set(LIBRARY_DIR     C:/Users/Erwin/Documents/Arduino/libraries)
+set(LIBRARY_DIR     C:/Users/User/Documents/Arduino/libraries)
 
 # Configure board, default Arduino UNO
 set(BOARD           uno)
 
 # Configure sketch
-set(SKETCH          examples/FullStep/FullStep.ino)
+set(SKETCH examples/Polled/FullStepBasic/FullStepBasic.ino)
 
 # Configure serial port, such as:
 #     Windows: COM1
 #     Linux:   /dev/ttyUSB0
-set(SERIAL_PORT     COM16)
+set(SERIAL_PORT     COM1)
 
 #-------------------------------------------------------------------------------
 # Project configuation

@@ -22,48 +22,57 @@
  * SOFTWARE.
  */
 
-/* Rotary half step example
+/* Rotary full step interrupt example
  * Source: https://github.com/Erriez/ArduinoLibraryRotary
  */
 
 #include <Arduino.h>
 #include <Rotary.h>
 
-// Configure rotary digital pins
+// Connect rotary to Arduino DIGITAL pins with interrupt support:
+//
+// +-----------------------------------+--------------------------+
+// |              Board                |  DIGITAL interrupt pins  |
+// +-----------------------------------+--------------------------+
+// | Uno, Nano, Mini, other 328-based  |  2, 3                    |
+// | Mega, Mega2560, MegaADK           |  2, 3, 18, 19, 20, 21    |
+// | Micro, Leonardo, other 32u4-based |  0, 1, 2, 3, 7           |
+// +-----------------------------------+--------------------------+
+//
 #define ROTARY_PIN1   2
 #define ROTARY_PIN2   3
 
-// Initialize half step rotary
-Rotary rotary(ROTARY_PIN1, ROTARY_PIN2, HalfStep);
+// Initialize full step rotary
+Rotary rotary(ROTARY_PIN1, ROTARY_PIN2, FullStep);
 
-// Global variables
-int count = 0;
-int countLast = 0;
+// Forward declaration
+void rotaryInterrupt();
 
 void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
-  Serial.println(F("Rotary half step example"));
+  Serial.println(F("Rotary full step interrupt example"));
+
+  // Initialize pin change interrupt on both rotary encoder pins
+  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN1), rotaryInterrupt, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN2), rotaryInterrupt, CHANGE);
 }
 
 void loop()
 {
-  // Read rotary state
-  count += rotary.read();
 
-  // Limit count to a minimum and maximum value
-  if (count > 100) {
-    count = 100;
-  }
-  if (count < 0) {
-    count = 0;
-  }
+}
+
+void rotaryInterrupt()
+{
+  int rotaryState;
+
+  // Read rotary state
+  rotaryState = rotary.read();
 
   // Print count value when rotary changed
-  if (countLast != count) {
-    countLast = count;
-    Serial.print(F("Count: "));
-    Serial.println(count);
+  if ((rotaryState > 0) || (rotaryState < 0)) {
+    Serial.println(rotaryState);
   }
 }

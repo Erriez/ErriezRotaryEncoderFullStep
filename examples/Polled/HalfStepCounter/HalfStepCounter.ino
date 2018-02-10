@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-/* Rotary full step example
+/* Rotary half step counter example
  * Source: https://github.com/Erriez/ArduinoLibraryRotary
  */
 
@@ -30,13 +30,11 @@
 #include <Rotary.h>
 
 // Configure rotary digital pins
-#define ROTARY_PIN1         2
-#define ROTARY_PIN2         3
-#define ROTARY_BUTTON_PIN   4
+#define ROTARY_PIN1   2
+#define ROTARY_PIN2   3
 
-// Initialize full step rotary
-// Use HalfStep to use a rotary in half step
-Rotary rotary(ROTARY_PIN1, ROTARY_PIN2, FullStep);
+// Initialize half step rotary
+Rotary rotary(ROTARY_PIN1, ROTARY_PIN2, HalfStep);
 
 // Global variables
 int count = 0;
@@ -44,30 +42,22 @@ int countLast = 0;
 
 void setup()
 {
-  // Enable pull-up rotary button pin
-  pinMode(ROTARY_BUTTON_PIN, INPUT_PULLUP);
-
   // Initialize Serial port
   Serial.begin(115200);
-  Serial.println(F("Rotary full step example"));
+  Serial.println(F("Rotary half step counter example"));
 }
 
 void loop()
 {
-  if (digitalRead(ROTARY_BUTTON_PIN) == 0) {
-    // Reset count when rotary button is down
-    count = 0;
-  } else {
-    // Read rotary state
-    count += rotary.read();
+  // Read rotary state
+  count += rotary.read();
 
-    // Limit count to a minimum and maximum value
-    if (count > 100) {
-      count = 100;
-    }
-    if (count < 0) {
-      count = 0;
-    }
+  // Limit count to a minimum and maximum value
+  if (count > 100) {
+    count = 100;
+  }
+  if (count < 0) {
+    count = 0;
   }
 
   // Print count value when rotary changed
