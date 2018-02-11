@@ -9,10 +9,6 @@ This is an optimized three speed Rotary Encoder library for Arduino which suppor
 * Single or multiple Rotary Encoders.
 * Optional Rotary button.
 
-
-## Table of contents
-[TOC]
-
 ## Hardware
 Connect the two rotary pins to the DIGITAL pins of an Arduino board.
 
@@ -42,12 +38,19 @@ The connection below can be used for polled and interrupts. An optional button p
 
 Note that some ESP8266 pins mixes ESP8622 GPIO pins with Arduino digital pins. Connect a Rotary Encoder to the following pins which can be used with polled and interrupt examples:
 
-|   Rotary pin   | ESP8622 | Text on board<br />WeMos D1 R2 |
-| :------------: | :-----: | :----------------------------: |
-|       1        | GPIO13  |            D7 MOSI             |
-|       2        | GPIO12  |            D6 MISO             |
-|     Button     | GPIO14  |             D5 SCK             |
-| LED (Not used) |  GPIO2  |               D4               |
+|   Rotary pin   | ESP8622 pin | Text on board<br />WeMos D1 R2 |
+| :------------: | :---------: | :----------------------------: |
+|       1        |   GPIO13    |            D7 MOSI             |
+|       2        |   GPIO12    |            D6 MISO             |
+|     Button     |   GPIO14    |             D5 SCK             |
+| LED (Not used) |    GPIO2    |               D4               |
+
+```c++
+// Connect the rotary pins to the WeMos D1 R2 board:
+#define ROTARY_PIN1         12
+#define ROTARY_PIN2         13
+#define ROTARY_BUTTON_PIN   14
+```
 
 
 
