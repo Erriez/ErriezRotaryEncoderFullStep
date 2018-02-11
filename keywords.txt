@@ -12,8 +12,10 @@ rotary		KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-begin		KEYWORD2
-read		KEYWORD2
+begin			KEYWORD2
+read			KEYWORD2
+setSensitivity	KEYWORD2
+getSensitivity	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
