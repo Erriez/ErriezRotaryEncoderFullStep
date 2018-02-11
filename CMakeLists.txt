@@ -4,44 +4,66 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 #-------------------------------------------------------------------------------
 # User configuration
 #-------------------------------------------------------------------------------
-# Project name
-set(PROJECT_NAME    ArduinoLibraryRotary)
+# Set Arduino sketchbook directory
+if(WIN32)
+    set(SKETCHBOOK_DIR  C:/Users/$ENV{USERNAME}/Documents/Arduino)
+elseif(UNIX)
+    set(SKETCHBOOK_DIR  $ENV{HOME}/Arduino/libraries)
+endif()
 
-# Library directory
-set(LIBRARY_DIR     C:/Users/User/Documents/Arduino/libraries)
+# Configure one sketch
+#set(SKETCH      examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino)
+#set(SKETCH      examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino)
+#set(SKETCH      examples/Interrupt/InterruptFullStepCounter/InterruptFullStepCounter.ino)
+set(SKETCH      examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino)
+#set(SKETCH      examples/Polled/PolledFullStepButton/PolledFullStepButton.ino)
+#set(SKETCH      examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino)
 
 # Configure board, default Arduino UNO
-set(BOARD           uno)
+set(BOARD       uno)
+#set(BOARD       nano)
 
-# Configure sketch
-set(SKETCH examples/Polled/FullStepBasic/FullStepBasic.ino)
+if(${BOARD} STREQUAL nano)
+    set(nano.upload.maximum_size 30720)
+    set(nano.upload.maximum_data_size 2048)
+    set(nano.upload.speed 57600)
+    set(nano.build.mcu atmega328p)
+endif()
 
-# Configure serial port, such as:
-#     Windows: COM1
-#     Linux:   /dev/ttyUSB0
-set(SERIAL_PORT     COM1)
+# Configure serial port:
+if(WIN32)
+    set(SERIAL_PORT     COM1)
+elseif(UNIX)
+    set(SERIAL_PORT     /dev/ttyUSB0)
+endif()
 
 #-------------------------------------------------------------------------------
 # Project configuation
 #-------------------------------------------------------------------------------
+# Project name
+set(PROJECT_NAME        ErriezRotaryEncoderFullStep)
+
+# Set library directory
+set(ROTARY_SRC_DIR      ${SKETCHBOOK_DIR}/libraries/${PROJECT_NAME}/src)
+
 # Configure project
 project(${PROJECT_NAME})
 
-set(ROTARY_LIBRARY_DIR    ${LIBRARY_DIR}/ArduinoLibraryRotary/src)
+# Configure include directories
+include_directories(${ROTARY_SRC_DIR})
 
-include_directories(${ROTARY_LIBRARY_DIR})
-
+# Generate library
 generate_arduino_library(
         RotaryLib
         SRCS
-            ${ROTARY_LIBRARY_DIR}/Rotary.cpp
+            ${ROTARY_SRC_DIR}/RotaryFullStep.cpp
         HDRS
-            ${ROTARY_LIBRARY_DIR}/Rotary.h
+            ${ROTARY_SRC_DIR}/RotaryFullStep.h
 )
 
+# Configure project
 set(${CMAKE_PROJECT_NAME}_SKETCH    ${SKETCH})
 set(${CMAKE_PROJECT_NAME}_LIBS      RotaryLib)
 set(${CMAKE_PROJECT_NAME}_BOARD     ${BOARD})
 set(${CMAKE_PROJECT_NAME}_PORT      ${SERIAL_PORT})
-
 generate_arduino_firmware(${CMAKE_PROJECT_NAME})
