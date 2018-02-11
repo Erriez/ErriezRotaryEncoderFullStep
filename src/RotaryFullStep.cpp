@@ -26,12 +26,17 @@
  * \file
  *     RotaryFullStep.cpp
  * \brief
- *     Three speed full step Rotary Encoder library for Arduino
+ *     Three speed full step Rotary Encoder library for Arduino.
  * \details
  *     Source: https://github.com/Erriez/ErriezRotaryEncoderFullStep
  */
 
+#if (defined(__AVR__))
 #include <avr/pgmspace.h>
+#else
+#include <pgmspace.h>
+#endif
+
 #include "RotaryFullStep.h"
 
 // No complete step yet
@@ -76,13 +81,17 @@ static const PROGMEM uint8_t fullStepTable[7][4] = {
  * \param pin2
  *     Rotary Encoder pin 2
  * \param pullUp
- *     Enable/disable Rotary Encoder pull-up pins
- * \param sensitive
- *     Sensitivity value 1..255 (Higher is more sensitive)
+ *     true:  Enable internal pull-up on Rotary Encoder pins [default argument].
+ *     false: Disable internal pull-up on Rotary Encoder pins.
+ * \param sensitivity
+ *     Set sensitivity rotation speed value 0..255.
+ *     A higher is more sensitive for rotation speed, a smaller value is less
+ *     sensitive or will disable speed detection.
+ *     Default is 100.
  */
 RotaryFullStep::RotaryFullStep(uint8_t pin1, uint8_t pin2, bool pullUp,
-               uint8_t sensitive) :
-  _pin1(pin1), _pin2(pin2), _state(0), _sensitive(sensitive)
+               uint8_t sensitivity) :
+  _pin1(pin1), _pin2(pin2), _state(0), _sensitivity(sensitivity)
 {
   if (pullUp) {
     // Enable internal pull-up
@@ -96,13 +105,21 @@ RotaryFullStep::RotaryFullStep(uint8_t pin1, uint8_t pin2, bool pullUp,
  *     Read Rotary Encoder state
  * \details
  *     Call this function as fast as possible to prevent missing pin changes.
- *     This seems to work for most rotary encoders <= 10ms.
+ *     This seems to work for most rotary encoders when calling this function
+ *     within 10ms in an endless loop.
+ *
+ *     The sensitivity value is used to calculate three rotation speeds by
+ *     measuring the speed of the Rotary Encoder pin changes. The rotation speed
+ *     depends on the number of Rotary notches and knob size. The value should
+ *     experimentally determined.
  * \return Rotary speed and direction
- *     -2: Counter clockwise fastest
- *     -1: Counter clockwise faster
- *     -0: No change
- *     1:  Clockwise faster
- *     2:  Clockwise fastest
+ *     -3: Counter clockwise turn, multiple notches fast
+ *     -2: Counter clockwise turn, multiple notches
+ *     -1: Counter clockwise turn, single notch
+ *      0:  No change
+ *      1:  Clockwise turn, single notch
+ *      2:  Clockwise turn, multiple notches
+ *      3:  Clockwise turn, multiple notches fast
  */
 int RotaryFullStep::read()
 {
@@ -137,12 +154,34 @@ int RotaryFullStep::read()
     _lastChange = timeStamp;
 
     // Check speed change
-    if (changeTime < (_sensitive / 2)) {
+    if (changeTime < (_sensitivity / 2)) {
       rotaryState *= 3;
-    } else if (changeTime < _sensitive) {
+    } else if (changeTime < _sensitivity) {
       rotaryState *= 2;
     }
   }
 
   return rotaryState;
+}
+
+/*!
+ * \brief
+ *     Set sensitivity value.
+ * \param sensitivity
+ *     Sensitivity value 0..255
+ */
+void RotaryFullStep::setSensitivity(uint8_t sensitivity)
+{
+  _sensitivity = sensitivity;
+}
+
+/*!
+ * \brief
+ *     Get sensitivity value.
+ * \return
+ *     Sensitivity value 0..255.
+ */
+uint8_t RotaryFullStep::getSensitivity()
+{
+  return _sensitivity;
 }

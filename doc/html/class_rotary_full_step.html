@@ -78,20 +78,26 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aef31e33e26d00a2527702ab7748a4f22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rotary_full_step.html#aef31e33e26d00a2527702ab7748a4f22">RotaryFullStep</a> (uint8_t pin1, uint8_t pin2, bool pullUp=true, uint8_t sensitive=100)</td></tr>
-<tr class="memdesc:aef31e33e26d00a2527702ab7748a4f22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor full step Rotary Encoder.  <a href="#aef31e33e26d00a2527702ab7748a4f22">More...</a><br /></td></tr>
-<tr class="separator:aef31e33e26d00a2527702ab7748a4f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf74de6f9ce49620a10b507e83591956"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rotary_full_step.html#aaf74de6f9ce49620a10b507e83591956">RotaryFullStep</a> (uint8_t pin1, uint8_t pin2, bool pullUp=true, uint8_t sensitivity=100)</td></tr>
+<tr class="memdesc:aaf74de6f9ce49620a10b507e83591956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor full step Rotary Encoder.  <a href="#aaf74de6f9ce49620a10b507e83591956">More...</a><br /></td></tr>
+<tr class="separator:aaf74de6f9ce49620a10b507e83591956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8abd339f6bba83afde753e450f1ba6c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rotary_full_step.html#a8abd339f6bba83afde753e450f1ba6c7">read</a> ()</td></tr>
 <tr class="memdesc:a8abd339f6bba83afde753e450f1ba6c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read Rotary Encoder state.  <a href="#a8abd339f6bba83afde753e450f1ba6c7">More...</a><br /></td></tr>
 <tr class="separator:a8abd339f6bba83afde753e450f1ba6c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413a674f1244573ad90befc73fd6e1d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rotary_full_step.html#a413a674f1244573ad90befc73fd6e1d4">setSensitivity</a> (uint8_t sensitivity)</td></tr>
+<tr class="memdesc:a413a674f1244573ad90befc73fd6e1d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set sensitivity value.  <a href="#a413a674f1244573ad90befc73fd6e1d4">More...</a><br /></td></tr>
+<tr class="separator:a413a674f1244573ad90befc73fd6e1d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55a1fce8a0b6436767f204ce16bc86fd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_rotary_full_step.html#a55a1fce8a0b6436767f204ce16bc86fd">getSensitivity</a> ()</td></tr>
+<tr class="memdesc:a55a1fce8a0b6436767f204ce16bc86fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get sensitivity value.  <a href="#a55a1fce8a0b6436767f204ce16bc86fd">More...</a><br /></td></tr>
+<tr class="separator:a55a1fce8a0b6436767f204ce16bc86fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Full step Rotary Encoder class. </p>
 
 <p class="definition">Definition at line <a class="el" href="_rotary_full_step_8h_source.html#l00042">42</a> of file <a class="el" href="_rotary_full_step_8h_source.html">RotaryFullStep.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aef31e33e26d00a2527702ab7748a4f22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef31e33e26d00a2527702ab7748a4f22">&#9670;&nbsp;</a></span>RotaryFullStep()</h2>
+<a id="aaf74de6f9ce49620a10b507e83591956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf74de6f9ce49620a10b507e83591956">&#9670;&nbsp;</a></span>RotaryFullStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,7 +124,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sensitive</em> = <code>100</code>&#160;</td>
+          <td class="paramname"><em>sensitivity</em> = <code>100</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -133,17 +139,39 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">pin1</td><td>Rotary Encoder pin 1 </td></tr>
     <tr><td class="paramname">pin2</td><td>Rotary Encoder pin 2 </td></tr>
-    <tr><td class="paramname">pullUp</td><td>Enable/disable Rotary Encoder pull-up pins </td></tr>
-    <tr><td class="paramname">sensitive</td><td>Sensitivity value 1..255 (Higher is more sensitive) </td></tr>
+    <tr><td class="paramname">pullUp</td><td>true: Enable internal pull-up on Rotary Encoder pins [default argument]. false: Disable internal pull-up on Rotary Encoder pins. </td></tr>
+    <tr><td class="paramname">sensitivity</td><td>Set sensitivity rotation speed value 0..255. A higher is more sensitive for rotation speed, a smaller value is less sensitive or will disable speed detection. Default is 100. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_rotary_full_step_8cpp_source.html#l00083">83</a> of file <a class="el" href="_rotary_full_step_8cpp_source.html">RotaryFullStep.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_rotary_full_step_8cpp_source.html#l00092">92</a> of file <a class="el" href="_rotary_full_step_8cpp_source.html">RotaryFullStep.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a55a1fce8a0b6436767f204ce16bc86fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a1fce8a0b6436767f204ce16bc86fd">&#9670;&nbsp;</a></span>getSensitivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t RotaryFullStep::getSensitivity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get sensitivity value. </p>
+<dl class="section return"><dt>Returns</dt><dd>Sensitivity value 0..255. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_rotary_full_step_8cpp_source.html#l00184">184</a> of file <a class="el" href="_rotary_full_step_8cpp_source.html">RotaryFullStep.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a8abd339f6bba83afde753e450f1ba6c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8abd339f6bba83afde753e450f1ba6c7">&#9670;&nbsp;</a></span>read()</h2>
 
@@ -160,9 +188,38 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Read Rotary Encoder state. </p>
-<p>Call this function as fast as possible to prevent missing pin changes. This seems to work for most rotary encoders &lt;= 10ms. </p><dl class="section return"><dt>Returns</dt><dd>Rotary speed and direction -2: Counter clockwise fastest -1: Counter clockwise faster -0: No change 1: Clockwise faster 2: Clockwise fastest </dd></dl>
+<p>Call this function as fast as possible to prevent missing pin changes. This seems to work for most rotary encoders when calling this function within 10ms in an endless loop.</p>
+<p>The sensitivity value is used to calculate three rotation speeds by measuring the speed of the Rotary Encoder pin changes. The rotation speed depends on the number of Rotary notches and knob size. The value should experimentally determined. </p><dl class="section return"><dt>Returns</dt><dd>Rotary speed and direction -3: Counter clockwise turn, multiple notches fast -2: Counter clockwise turn, multiple notches -1: Counter clockwise turn, single notch 0: No change 1: Clockwise turn, single notch 2: Clockwise turn, multiple notches 3: Clockwise turn, multiple notches fast </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_rotary_full_step_8cpp_source.html#l00107">107</a> of file <a class="el" href="_rotary_full_step_8cpp_source.html">RotaryFullStep.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_rotary_full_step_8cpp_source.html#l00124">124</a> of file <a class="el" href="_rotary_full_step_8cpp_source.html">RotaryFullStep.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a413a674f1244573ad90befc73fd6e1d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413a674f1244573ad90befc73fd6e1d4">&#9670;&nbsp;</a></span>setSensitivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RotaryFullStep::setSensitivity </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sensitivity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set sensitivity value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sensitivity</td><td>Sensitivity value 0..255 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_rotary_full_step_8cpp_source.html#l00173">173</a> of file <a class="el" href="_rotary_full_step_8cpp_source.html">RotaryFullStep.cpp</a>.</p>
 
 </div>
 </div>

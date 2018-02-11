@@ -18,6 +18,7 @@ endif()
 set(SKETCH      examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino)
 #set(SKETCH      examples/Polled/PolledFullStepButton/PolledFullStepButton.ino)
 #set(SKETCH      examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino)
+#set(SKETCH      examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino)
 
 # Configure board, default Arduino UNO
 set(BOARD       uno)

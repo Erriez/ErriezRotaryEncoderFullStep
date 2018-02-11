@@ -43,15 +43,17 @@ class RotaryFullStep
 {
   public:
     RotaryFullStep(uint8_t pin1, uint8_t pin2, bool pullUp=true,
-           uint8_t sensitive=100);
+           uint8_t sensitivity=100);
     int read();
+    void setSensitivity(uint8_t sensitivity);
+    uint8_t getSensitivity();
 
   private:
     unsigned long  _lastChange;
     uint8_t _pin1;
     uint8_t _pin2;
     uint8_t _state;
-    uint8_t _sensitive;
+    uint8_t _sensitivity;
 };
 
 #endif // ROTARY_FULL_STEP_H__

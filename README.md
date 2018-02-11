@@ -5,8 +5,13 @@ This is an optimized three speed Rotary Encoder library for Arduino which suppor
 * Full step Rotary Encoder types.
 * Detect three rotation speeds.
 * Configurable sensitivity.
-* Polling and interrupts.
-* Optional button.
+* Polling and interrupt based.
+* Single or multiple Rotary Encoders.
+* Optional Rotary button.
+
+
+## Table of contents
+[TOC]
 
 ## Hardware
 Connect the two rotary pins to the DIGITAL pins of an Arduino board.
@@ -21,20 +26,33 @@ Tested with Arduino IDE v1.8.5 on hardware:
 * Arduino Pro or Pro Mini
 * Arduino Mega or Mega2560
 * Arduino Leonardo
-* WeMos D1 R2 & mini
+* WeMos D1 R2 & mini (ESP8266)
 
 ### Interrupts
 
 Both rotary pins must be connected to a DIGITAL pin with interrupt support, such as `INT0` or `INT1`. This is chip specific. Please refer to the documentation of your board or [attachInterrupt()](https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/).
 
-### Arduino UNO example
+### Arduino UNO hardware
 
 The connection below can be used for polled and interrupts. An optional button pin can be connected to DIGITAL pin 4.
 
 ![alt text](https://raw.githubusercontent.com/Erriez/ArduinoLibraryRotary/master/extras/FritzingRotary.png "3-pin Rotary Encoder Arduino connection")
 
+### Arduino WeMos D1 R2 & mini (ESP8266) hardware
+
+Note that some ESP8266 pins mixes ESP8622 GPIO pins with Arduino digital pins. Connect a Rotary Encoder to the following pins which can be used with polled and interrupt examples:
+
+|   Rotary pin   | ESP8622 | Text on board<br />WeMos D1 R2 |
+| :------------: | :-----: | :----------------------------: |
+|       1        | GPIO13  |            D7 MOSI             |
+|       2        | GPIO12  |            D6 MISO             |
+|     Button     | GPIO14  |             D5 SCK             |
+| LED (Not used) |  GPIO2  |               D4               |
+
+
 
 ## Examples
+
 The following examples are available:
 * Rotary | Interrupt | [InterruptFullStepBasic](https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino)
 * Rotary | Interrupt | [InterruptFullStepButton](https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino)
@@ -42,6 +60,7 @@ The following examples are available:
 * Rotary | Polled | [PolledFullStepBasic](https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino)
 * Rotary | Polled | [PolledFullStepButton](https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepButton/PolledFullStepButton.ino)
 * Rotary | Polled | [PolledFullStepCounter](https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino)
+* Rotary | Polled | [PolledFullStepMultiple](https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino)
 
 
 
@@ -51,7 +70,7 @@ The following examples are available:
 ```c++
 #include <RotaryFullStep.h>
   
-// Configure rotary pins connected to your Arduino board
+// Connect rotary pins to the DIGITAL pins of the Arduino board
 #define ROTARY_PIN1   2
 #define ROTARY_PIN2   3
   
@@ -70,13 +89,13 @@ void loop()
 {
     int rotaryState = rotary.read();
   
-    // rotaryState = -3: Turn left fastest
-    // rotaryState = -2: Turn left faster
-    // rotaryState = -1: Turn left
+    // rotaryState = -3: Counter clockwise turn, multiple notches fast
+    // rotaryState = -2: Counter clockwise turn, multiple notches
+    // rotaryState = -1: Counter clockwise turn, single notch
     // rotaryState = 0:  No change
-    // rotaryState = 1:  Turn right
-    // rotaryState = 2:  Turn right faster
-    // rotaryState = 3:  Turn right fastest
+    // rotaryState = 1:  Clockwise turn, single notch
+    // rotaryState = 2:  Clockwise turn, multiple notches
+    // rotaryState = 3:  Clockwise turn, multiple notches fast
 }
 ```
 
@@ -85,7 +104,7 @@ void loop()
 ```c++
 #include <RotaryFullStep.h>
 
-// Connect rotary to Arduino DIGITAL pins with interrupt support:
+// Connect rotary pins to Arduino DIGITAL pins with interrupt support:
 //
 // +-----------------------------------+--------------------------+
 // |              Board                |  DIGITAL interrupt pins  |
@@ -132,6 +151,8 @@ void rotaryInterrupt()
 
 ## Installation with Git
 
+`Git` is the preferred way to keep this library up to date, because the Arduino Library manager does not update as long as this library is not added to the official Arduino Library database.
+
 ### Install Git client for Windows
 
 Install a [Git client for Windows](https://git-scm.com/download/win).
@@ -144,26 +165,59 @@ Open a command prompt and install a Git client for Linux, such as Debian Ubuntu:
 sudo apt-get install git
 ```
 
-### Windows and Linux
+### Get Arduino libraries directory
 
-The library must be installed in the Sketchbook directory which is configured in the Preferences dialog box.
+This library must be installed in the Arduino Sketchbook library subdirectory.
 
-1. Click `File` | `Preferences` |`Settings` tab and copy the Sketchbook location.
-   The path on Windows is something like: `C:\Users\User\Documents\Arduino`
-   The path on Linux is something like: `/home/user/Arduino`
-2. Open a command prompt and type: 
+To retrieve the Arduino Sketchbook directory, open the Arduino IDE Preferences dialog box via:
+`File` | `Preferences` |`Settings tab` and copy the Sketchbook location.
+
+For example on:
+
+* Windows : `C:\Users\User\Documents\Arduino`
+* Linux: `/home/user/Arduino`
+
+### Clone this library
+
+Clone this library by opening a command prompt:
+
+* Windows:  (`Windows key + R`, Type `cmd` + `[ENTER]`)
+* Linux: Depends on your version.
+
+Then type:
 
 ```shell
-# Run on Windows:
+# Change directory to the sketchbook directory as configured in the Arduino IDE:
+# Windows:
 cd C:\Users\User\Documents\Arduino
-# Or run on Linux:
+# Linux:
 cd ~/Arduino
 
+# Go to the libraries subdirectory
+cd libraries
+
 # Run the git clone library once:
-git clone git clone https://github.com/Erriez/ErriezRotaryEncoderFullStep.git
+git clone https://github.com/Erriez/ErriezRotaryEncoderFullStep.git
+```
+
+**IMPORTANT:** Restart the Arduino IDE.
+
+### Update this library
+
+Open a command prompt and type: 
+
+```shell
+# Change directory to the sketchbook directory as configured in the Arduino IDE:
+# Windows:
+cd C:\Users\User\Documents\Arduino
+# Linux:
+cd ~/Arduino
+
+# Go to the libraries subdirectory
+cd libraries
 
 # Update the library:
 git pull
 ```
 
-3. Restart the Arduino IDE.
+**IMPORTANT:** Restart the Arduino IDE.

@@ -22,25 +22,28 @@
  * SOFTWARE.
  */
 
-/* Polled Full Step Rotary Encoder counter example
+/* Counter example polled full step Rotary Encoder
  * Source: https://github.com/Erriez/ErriezRotaryEncoderFullStep
  */
 
 #include <Arduino.h>
 #include <RotaryFullStep.h>
 
-// Configure rotary digital pins
+// Connect rotary pins to the DIGITAL or ANALOG pins of the Arduino board
+// Use A0..A7 when using analog pins
 #define ROTARY_PIN1         2
 #define ROTARY_PIN2         3
 
-// Initialize full step rotary encoder, default pull-up enabled, default
-// sensitive=100
+// Initialize full step rotary encoder with internal pull-up pins enabled
+// and default sensitivity=100
 RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);
 
-// Initialize full step rotary, pull-up disabled, default sensitive=100
+// Or initialize full step rotary encoder with internal pull-up pins disabled
+// and default sensitivity=100
 // RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, false);
 
-// Or initialize full step rotary encoder, pull-up enabled, sensitive 1..255
+// Or initialize full step rotary encoder with internal pull-up pins enabled and
+// sensitivity value 1..255
 // A higher value is more sensitive
 // RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, true, 200);
 
@@ -52,7 +55,10 @@ void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
-  Serial.println(F("Polled Full Step Rotary Encoder counter example"));
+  Serial.println(F("Counter example polled full step Rotary Encoder"));
+
+  // Change sensitivity
+  rotary.setSensitivity(125);
 }
 
 void loop()
@@ -63,7 +69,10 @@ void loop()
   rotaryState = rotary.read();
 
   // Count up or down by using rotary speed
-  if (abs(rotaryState) >= 2) {
+  if (rotaryState == 0) {
+    // No change
+    return;
+  } else if (abs(rotaryState) >= 2) {
     count += rotaryState * 2;
   } else {
     count += rotaryState;

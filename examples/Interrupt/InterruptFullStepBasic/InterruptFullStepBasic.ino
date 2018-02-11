@@ -22,36 +22,31 @@
  * SOFTWARE.
  */
 
-/* Interrupt Full Step Rotary Encoder basic example
+/* Basic example full step Rotary Encoder with interrupts
  * Source: https://github.com/Erriez/ErriezRotaryEncoderFullStep
  */
 
 #include <Arduino.h>
 #include <RotaryFullStep.h>
 
-// Connect rotary to Arduino DIGITAL pins with interrupt support:
+// Connect rotary pins to the DIGITAL pins of the Arduino board with interrupt
+// support:
 //
-// +-----------------------------------+--------------------------+
-// |              Board                |  DIGITAL interrupt pins  |
-// +-----------------------------------+--------------------------+
-// | Uno, Nano, Mini, other 328-based  |  2, 3                    |
-// | Mega, Mega2560, MegaADK           |  2, 3, 18, 19, 20, 21    |
-// | Micro, Leonardo, other 32u4-based |  0, 1, 2, 3, 7           |
-// +-----------------------------------+--------------------------+
+// +-----------------------------------+----------------------------+
+// |              Board                |    DIGITAL interrupt pins  |
+// +-----------------------------------+----------------------------+
+// | Uno, Nano, Mini, other 328-based  |  2, 3                      |
+// | Mega, Mega2560, MegaADK           |  2, 3, 18, 19, 20, 21      |
+// | Micro, Leonardo, other 32u4-based |  0, 1, 2, 3, 7             |
+// | WeMos D1 R2 & mini (ESP8266)      |  12 = D6; 13 = D7; 14 = D5 |
+// +-----------------------------------+----------------------------+
 //
 #define ROTARY_PIN1   2
 #define ROTARY_PIN2   3
 
-// Initialize full step rotary encoder, default pull-up enabled, default
-// sensitive=100
+// Initialize full step rotary encoder with internal pull-up pins enabled
+// and default sensitivity=100
 RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);
-
-// Initialize full step rotary, pull-up disabled, default sensitive=100
-// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, false);
-
-// Or initialize full step rotary encoder, pull-up enabled, sensitive 1..255
-// A higher value is more sensitive
-// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, true, 150);
 
 // Forward declaration
 void rotaryInterrupt();
@@ -60,7 +55,7 @@ void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
-  Serial.println(F("Interrupt Full Step Rotary Encoder basic example"));
+  Serial.println(F("Basic example full step Rotary Encoder with interrupts"));
 
   // Initialize pin change interrupt on both rotary encoder pins
   attachInterrupt(digitalPinToInterrupt(ROTARY_PIN1), rotaryInterrupt, CHANGE);
@@ -69,7 +64,7 @@ void setup()
 
 void loop()
 {
-
+  // Wait for interrupt
 }
 
 void rotaryInterrupt()
