@@ -45,26 +45,26 @@ endif()
 set(PROJECT_NAME        ErriezRotaryEncoderFullStep)
 
 # Set library directory
-set(ROTARY_SRC_DIR      ${SKETCHBOOK_DIR}/libraries/${PROJECT_NAME}/src)
+set(LIB_SRC_DIR         ${SKETCHBOOK_DIR}/libraries/${PROJECT_NAME}/src)
 
 # Configure project
 project(${PROJECT_NAME})
 
 # Configure include directories
-include_directories(${ROTARY_SRC_DIR})
+include_directories(${LIB_SRC_DIR})
 
 # Generate library
 generate_arduino_library(
-        RotaryLib
+        ${PROJECT_NAME}Lib
         SRCS
-            ${ROTARY_SRC_DIR}/RotaryFullStep.cpp
+            ${LIB_SRC_DIR}/RotaryFullStep.cpp
         HDRS
-            ${ROTARY_SRC_DIR}/RotaryFullStep.h
+            ${LIB_SRC_DIR}/RotaryFullStep.h
 )
 
 # Configure project
 set(${CMAKE_PROJECT_NAME}_SKETCH    ${SKETCH})
-set(${CMAKE_PROJECT_NAME}_LIBS      RotaryLib)
+set(${CMAKE_PROJECT_NAME}_LIBS      ${PROJECT_NAME}Lib)
 set(${CMAKE_PROJECT_NAME}_BOARD     ${BOARD})
 set(${CMAKE_PROJECT_NAME}_PORT      ${SERIAL_PORT})
 generate_arduino_firmware(${CMAKE_PROJECT_NAME})
