@@ -55,6 +55,9 @@ void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("Counter example polled full step Rotary Encoder"));
 
   // Change sensitivity

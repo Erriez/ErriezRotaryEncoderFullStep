@@ -68,6 +68,9 @@ void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("Counter example full step Rotary Encoder with interrupts"));
 
   // Initialize pin change interrupt on both rotary encoder pins

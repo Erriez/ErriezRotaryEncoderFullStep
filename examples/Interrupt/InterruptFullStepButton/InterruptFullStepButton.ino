@@ -71,6 +71,9 @@ void printCount();
 void setup()
 {  // Initialize Serial port
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("Button example full step Rotary Encoder with interrupts"));
 
   // Enable internal pull-up for the rotary button pin

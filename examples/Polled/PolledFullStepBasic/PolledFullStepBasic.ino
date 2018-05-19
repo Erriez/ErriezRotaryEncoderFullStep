@@ -42,6 +42,9 @@ void setup()
 {
   // Initialize Serial port
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("Basic example polled full step Rotary Encoder"));
 }
 
