@@ -51,7 +51,7 @@ Both rotary pins must be connected to a DIGITAL pin with interrupt support, such
 
 The connection below can be used for polled and interrupts. An optional button pin can be connected to DIGITAL pin 4.
 
-![alt text](https://raw.githubusercontent.com/Erriez/ErriezRotary/master/extras/FritzingRotary.png "3-pin Rotary Encoder Arduino connection")
+![alt text](https://raw.githubusercontent.com/Erriez/ErriezRotaryEncoderFullStep/master/extras/FritzingRotary.png"3-pin Rotary Encoder Arduino connection")
 
 |    Rotary pin     | Arduino UNO/NANO/Mega2560/Leonardo board |
 | :---------------: | :--------------------------------------: |
