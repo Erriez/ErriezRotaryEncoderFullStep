@@ -39,22 +39,19 @@
 
 #include "RotaryFullStep.h"
 
-// No complete step yet
-#define DIR_NONE  0x00
-// Clockwise step
-#define DIR_CW    0x10
-// Counter-clockwise step
-#define DIR_CCW   0x20
+#define DIR_NONE  0x00      //!< No complete step yet
+#define DIR_CW    0x10      //!< Clockwise step
+#define DIR_CCW   0x20      //!< Counter-clockwise step
 
 // Use the full-step state table, clockwise and counter clockwise
 // Emits a code at '00' only
-#define RFS_START          0x00
-#define RFS_CW_FINAL       0x01
-#define RFS_CW_BEGIN       0x02
-#define RFS_CW_NEXT        0x03
-#define RFS_CCW_BEGIN      0x04
-#define RFS_CCW_FINAL      0x05
-#define RFS_CCW_NEXT       0x06
+#define RFS_START          0x00     //!< Rotary full step start
+#define RFS_CW_FINAL       0x01     //!< Rotary full step clock wise final
+#define RFS_CW_BEGIN       0x02     //!< Rotary full step clock begin
+#define RFS_CW_NEXT        0x03     //!< Rotary full step clock next
+#define RFS_CCW_BEGIN      0x04     //!< Rotary full step counter clockwise begin
+#define RFS_CCW_FINAL      0x05     //!< Rotary full step counter clockwise final
+#define RFS_CCW_NEXT       0x06     //!< Rotary full step counter clockwise next
 
 static const PROGMEM uint8_t fullStepTable[7][4] = {
     // RFS_START

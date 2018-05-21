@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="RotaryEncoder.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Full step Rotary Encoder
    &#160;<span id="projectnumber">1.0.1</span>
@@ -67,7 +68,8 @@ $(function() {
 <div class="title">3 speed Rotary Encoder Full Step library for Arduino </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This is an optimized three speed Rotary Encoder library for Arduino which supports:</p>
+<div class="textblock"><p><a href="https://travis-ci.org/Erriez/ErriezRotaryEncoderFullStep"></a></p>
+<p>This is an optimized three speed Rotary Encoder library for Arduino which supports:</p>
 <ul>
 <li>Full step Rotary Encoder types.</li>
 <li>Detect three rotation speeds.</li>
@@ -77,6 +79,9 @@ $(function() {
 <li>Optional Rotary button.</li>
 <li>Pin state table in flash.</li>
 </ul>
+<div class="image">
+<img src="https://raw.githubusercontent.com/Erriez/ErriezRotaryEncoderFullStep/master/extras/RotaryEncoder.png" alt="Rotary encoder"/>
+</div>
 <h2>Full step / half step Rotary Encoders</h2>
 <p>The difference between a full step or half step Rotary Encoder type is how the data signals of the two pins are generated. It depends on the mechanical construction of the notches and contacts inside the Rotary Encoder.</p>
 <p>Please refer to the <a href="https://github.com/Erriez/ErriezRotaryEncoderHalfStep">ErriezRotaryEncoderHalfStep</a> library for half step Rotary Encoders. Experiment with the half step and full step libraries which works optimal for your Rotary Encoder.</p>
@@ -98,17 +103,17 @@ $(function() {
 <h3>Arduino UNO hardware</h3>
 <p>The connection below can be used for polled and interrupts. An optional button pin can be connected to DIGITAL pin 4.</p>
 <div class="image">
-<img src="https://raw.githubusercontent.com/Erriez/ArduinoLibraryRotary/master/extras/FritzingRotary.png" alt="alt text" title="3-pin Rotary Encoder Arduino connection"/>
+<img src="https://raw.githubusercontent.com/Erriez/ErriezRotary/master/extras/FritzingRotary.png" alt="alt text" title="3-pin Rotary Encoder Arduino connection"/>
 </div>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadCenter">Rotary pin  </th><th class="markdownTableHeadCenter">Arduino UNO/NANO/Mega2560/Leonardo board   </th></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyCenter">D2 (INT0)   </td></tr>
+<td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyCenter">DIGITAL pin 2 (INT0)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">2  </td><td class="markdownTableBodyCenter">D3 (INT1)   </td></tr>
+<td class="markdownTableBodyCenter">2  </td><td class="markdownTableBodyCenter">DIGITAL pin 3 (INT1)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">Button (optional)  </td><td class="markdownTableBodyCenter">D4   </td></tr>
+<td class="markdownTableBodyCenter">Button (optional)  </td><td class="markdownTableBodyCenter">DIGITAL pin 4   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
 <td class="markdownTableBodyCenter">GND  </td><td class="markdownTableBodyCenter">GND   </td></tr>
 </table>
@@ -116,14 +121,13 @@ $(function() {
 <p>Note that some ESP8266 pins mixes ESP8622 GPIO pins with Arduino digital pins. Connect a Rotary Encoder to the following pins which can be used with polled and interrupt examples:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadCenter">Rotary pin  </th><th class="markdownTableHeadCenter">ESP8622 pin  </th><th class="markdownTableHeadCenter">Text on board<br />
-WeMos D1 R2   </th></tr>
+<th class="markdownTableHeadCenter">Rotary pin  </th><th class="markdownTableHeadCenter">ESP8622 pin  </th><th class="markdownTableHeadCenter">Text on board / WeMos D1 &amp; R2   </th></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyCenter">GPIO13  </td><td class="markdownTableBodyCenter">D7 MOSI   </td></tr>
+<td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyCenter">GPIO13  </td><td class="markdownTableBodyCenter">D7 (MOSI)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">2  </td><td class="markdownTableBodyCenter">GPIO12  </td><td class="markdownTableBodyCenter">D6 MISO   </td></tr>
+<td class="markdownTableBodyCenter">2  </td><td class="markdownTableBodyCenter">GPIO12  </td><td class="markdownTableBodyCenter">D6 (MISO)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">Button (optional)  </td><td class="markdownTableBodyCenter">GPIO14  </td><td class="markdownTableBodyCenter">D5 SCK   </td></tr>
+<td class="markdownTableBodyCenter">Button (optional)  </td><td class="markdownTableBodyCenter">GPIO14  </td><td class="markdownTableBodyCenter">D5 (SCK)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
 <td class="markdownTableBodyCenter">LED (Not used)  </td><td class="markdownTableBodyCenter">GPIO2  </td><td class="markdownTableBodyCenter">D4   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
@@ -132,50 +136,27 @@ WeMos D1 R2   </th></tr>
 <p><b>Note:</b> An external pull-up resistor is required when a pin does not have an internal pull-up.</p>
 <div class="fragment"><div class="line">{c++}</div><div class="line">// Connect the rotary pins to the WeMos D1 R2 board:</div><div class="line">#define ROTARY_PIN1         12</div><div class="line">#define ROTARY_PIN2         13</div><div class="line">#define ROTARY_BUTTON_PIN   14</div></div><!-- fragment --><h2>Examples</h2>
 <p>The following examples are available:</p><ul>
-<li>Rotary | Interrupt | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino">InterruptFullStepBasic</a></li>
-<li>Rotary | Interrupt | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino">InterruptFullStepButton</a></li>
-<li>Rotary | Interrupt | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Interrupt/InterruptFullStepCounter/InterruptFullStepCounter.ino">InterruptFullStepCounter</a></li>
-<li>Rotary | Polled | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino">PolledFullStepBasic</a></li>
-<li>Rotary | Polled | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepButton/PolledFullStepButton.ino">PolledFullStepButton</a></li>
-<li>Rotary | Polled | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino">PolledFullStepCounter</a></li>
-<li>Rotary | Polled | <a href="https://github.com/Erriez/ArduinoLibraryRotary/blob/master/examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino">PolledFullStepMultiple</a></li>
+<li>Rotary | Interrupt | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino">InterruptFullStepBasic</a></li>
+<li>Rotary | Interrupt | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino">InterruptFullStepButton</a></li>
+<li>Rotary | Interrupt | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Interrupt/InterruptFullStepCounter/InterruptFullStepCounter.ino">InterruptFullStepCounter</a></li>
+<li>Rotary | Polled | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino">PolledFullStepBasic</a></li>
+<li>Rotary | Polled | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepButton/PolledFullStepButton.ino">PolledFullStepButton</a></li>
+<li>Rotary | Polled | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino">PolledFullStepCounter</a></li>
+<li>Rotary | Polled | <a href="https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino">PolledFullStepMultiple</a></li>
 </ul>
 <h2>Usage</h2>
 <p><b>Read rotary with polling</b> </p><div class="fragment"><div class="line">{c++}</div><div class="line">#include &lt;RotaryFullStep.h&gt;</div><div class="line"></div><div class="line">// Connect rotary pins to the DIGITAL pins of the Arduino board</div><div class="line">#define ROTARY_PIN1   2</div><div class="line">#define ROTARY_PIN2   3</div><div class="line"></div><div class="line">// Enable ONE of the three constructors below with different number of arguments:</div><div class="line"></div><div class="line">// Initialize full step rotary encoder, default pull-up enabled, default </div><div class="line">// sensitive=100</div><div class="line">RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);</div><div class="line"></div><div class="line">// Or initialize full step rotary encoder, pull-up disabled, default sensitive=100</div><div class="line">// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, false);</div><div class="line"></div><div class="line">// Or initialize full step rotary encoder, pull-up enabled, sensitive 1..255</div><div class="line">// A higher value is more sensitive</div><div class="line">// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, true, 150);</div><div class="line"></div><div class="line">void loop()</div><div class="line">{</div><div class="line">  int rotaryState = rotary.read();</div><div class="line"></div><div class="line">  // rotaryState = -3: Counter clockwise turn, multiple notches fast</div><div class="line">  // rotaryState = -2: Counter clockwise turn, multiple notches</div><div class="line">  // rotaryState = -1: Counter clockwise turn, single notch</div><div class="line">  // rotaryState = 0:  No change</div><div class="line">  // rotaryState = 1:  Clockwise turn, single notch</div><div class="line">  // rotaryState = 2:  Clockwise turn, multiple notches</div><div class="line">  // rotaryState = 3:  Clockwise turn, multiple notches fast</div><div class="line">}</div></div><!-- fragment --><p><b>Read rotary with interrupts</b></p>
-<div class="fragment"><div class="line">{c++}</div><div class="line">#include &lt;RotaryFullStep.h&gt;</div><div class="line"></div><div class="line">// Connect rotary pins to Arduino DIGITAL pins with interrupt support:</div><div class="line">//</div><div class="line">// +-----------------------------------+--------------------------+</div><div class="line">// |              Board                |  DIGITAL interrupt pins  |</div><div class="line">// +-----------------------------------+--------------------------+</div><div class="line">// | Uno, Nano, Mini, other 328-based  |  2, 3                    |</div><div class="line">// | Mega, Mega2560, MegaADK           |  2, 3, 18, 19, 20, 21    |</div><div class="line">// | Micro, Leonardo, other 32u4-based |  0, 1, 2, 3, 7           |</div><div class="line">// +-----------------------------------+--------------------------+</div><div class="line">//</div><div class="line">#define ROTARY_PIN1   2</div><div class="line">#define ROTARY_PIN2   3</div><div class="line"></div><div class="line">// Enable ONE of the three constructors below with different number of arguments:</div><div class="line"></div><div class="line">// Initialize full step rotary encoder, default pull-up enabled, default </div><div class="line">// sensitive=100</div><div class="line">RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);</div><div class="line"></div><div class="line">// Or initialize full step rotary encoder, pull-up disabled, default sensitive=100</div><div class="line">// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, false);</div><div class="line"></div><div class="line">// Or initialize full step rotary encoder, pull-up enabled, sensitive 1..255</div><div class="line">// A higher value is more sensitive</div><div class="line">// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, true, 150);</div><div class="line"></div><div class="line">void setup()</div><div class="line">{</div><div class="line">  // Initialize pin change interrupt on both rotary encoder pins</div><div class="line">  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN1), rotaryInterrupt, CHANGE);</div><div class="line">  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN2), rotaryInterrupt, CHANGE);</div><div class="line">}</div><div class="line"></div><div class="line">void rotaryInterrupt()</div><div class="line">{</div><div class="line">  int rotaryState = rotary.read();</div><div class="line"></div><div class="line">  // rotaryState = -3: Counter clockwise turn, multiple notches fast</div><div class="line">  // rotaryState = -2: Counter clockwise turn, multiple notches</div><div class="line">  // rotaryState = -1: Counter clockwise turn, single notch</div><div class="line">  // rotaryState = 0:  No change</div><div class="line">  // rotaryState = 1:  Clockwise turn, single notch</div><div class="line">  // rotaryState = 2:  Clockwise turn, multiple notches</div><div class="line">  // rotaryState = 3:  Clockwise turn, multiple notches fast</div><div class="line">}</div></div><!-- fragment --><h2>Libary installation using Git</h2>
-<p><code>Git</code> is the preferred way to keep this library up to date, because the Arduino Library manager does not update as long as this library is not added to the official Arduino Library database.</p>
-<h3>Install Git client for Windows</h3>
-<p>Install a <a href="https://git-scm.com/download/win">Git client for Windows</a>.</p>
-<h3>Install Git client for Linux</h3>
-<p>Open a command prompt and install a Git client for Linux, such as Debian Ubuntu:</p>
-<div class="fragment"><div class="line">sudo apt-get install git</div></div><!-- fragment --><h3>Get Arduino libraries directory</h3>
-<p>This library must be installed in the Arduino Sketchbook library subdirectory.</p>
-<p>To retrieve the Arduino Sketchbook directory, open the Arduino IDE Preferences dialog box via: <code>File</code> | <code>Preferences</code> |<code>Settings tab</code> and copy the Sketchbook location.</p>
-<p>For example on:</p>
+<div class="fragment"><div class="line">{c++}</div><div class="line">#include &lt;RotaryFullStep.h&gt;</div><div class="line"></div><div class="line">// Connect rotary pins to Arduino DIGITAL pins with interrupt support:</div><div class="line">//</div><div class="line">// +-----------------------------------+--------------------------+</div><div class="line">// |              Board                |  DIGITAL interrupt pins  |</div><div class="line">// +-----------------------------------+--------------------------+</div><div class="line">// | Uno, Nano, Mini, other 328-based  |  2, 3                    |</div><div class="line">// | Mega, Mega2560, MegaADK           |  2, 3, 18, 19, 20, 21    |</div><div class="line">// | Micro, Leonardo, other 32u4-based |  0, 1, 2, 3, 7           |</div><div class="line">// +-----------------------------------+--------------------------+</div><div class="line">//</div><div class="line">#define ROTARY_PIN1   2</div><div class="line">#define ROTARY_PIN2   3</div><div class="line"></div><div class="line">// Enable ONE of the three constructors below with different number of arguments:</div><div class="line"></div><div class="line">// Initialize full step rotary encoder, default pull-up enabled, default </div><div class="line">// sensitive=100</div><div class="line">RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);</div><div class="line"></div><div class="line">// Or initialize full step rotary encoder, pull-up disabled, default sensitive=100</div><div class="line">// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, false);</div><div class="line"></div><div class="line">// Or initialize full step rotary encoder, pull-up enabled, sensitive 1..255</div><div class="line">// A higher value is more sensitive</div><div class="line">// RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2, true, 150);</div><div class="line"></div><div class="line">void setup()</div><div class="line">{</div><div class="line">  // Initialize pin change interrupt on both rotary encoder pins</div><div class="line">  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN1), rotaryInterrupt, CHANGE);</div><div class="line">  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN2), rotaryInterrupt, CHANGE);</div><div class="line">}</div><div class="line"></div><div class="line">void rotaryInterrupt()</div><div class="line">{</div><div class="line">  int rotaryState = rotary.read();</div><div class="line"></div><div class="line">  // rotaryState = -3: Counter clockwise turn, multiple notches fast</div><div class="line">  // rotaryState = -2: Counter clockwise turn, multiple notches</div><div class="line">  // rotaryState = -1: Counter clockwise turn, single notch</div><div class="line">  // rotaryState = 0:  No change</div><div class="line">  // rotaryState = 1:  Clockwise turn, single notch</div><div class="line">  // rotaryState = 2:  Clockwise turn, multiple notches</div><div class="line">  // rotaryState = 3:  Clockwise turn, multiple notches fast</div><div class="line">}</div></div><!-- fragment --><h2>Library dependencies</h2>
 <ul>
-<li>Windows : <code>C:\Users\User\Documents\Arduino</code></li>
-<li>Linux: <code>/home/user/Arduino</code></li>
+<li>No other libraries are used.</li>
 </ul>
-<h3>Clone this library</h3>
-<p>Clone this library by opening a command prompt:</p>
+<h2>Documentation</h2>
 <ul>
-<li>Windows: (<code>Windows key + R</code>, Type <code>cmd</code> + <code>[ENTER]</code>)</li>
-<li>Linux: Depends on your version.</li>
+<li><a href="https://Erriez.github.io/ErriezRotaryEncoderFullStep">Doxygen online HTML</a></li>
+<li><a href="https://github.com/Erriez/ErriezRotaryEncoderFullStep/raw/master/docs/latex/refman.pdf">Doxygen PDF</a></li>
 </ul>
-<p>Then type:</p>
-<div class="fragment"><div class="line"># Change directory to the sketchbook directory as configured in the Arduino IDE:</div><div class="line"># Windows:</div><div class="line">cd C:\Users\User\Documents\Arduino</div><div class="line"># Linux:</div><div class="line">cd ~/Arduino</div><div class="line"></div><div class="line"># Go to the libraries subdirectory</div><div class="line">cd libraries</div><div class="line"></div><div class="line"># Run the git clone library once:</div><div class="line">git clone https://github.com/Erriez/ErriezRotaryEncoderFullStep.git</div></div><!-- fragment --><p><b>IMPORTANT:</b> Restart the Arduino IDE.</p>
-<h3>Update this library</h3>
-<p>Open a command prompt and type:</p>
-<div class="fragment"><div class="line"># Change directory to the sketchbook directory as configured in the Arduino IDE:</div><div class="line"># Windows:</div><div class="line">cd C:\Users\User\Documents\Arduino</div><div class="line"># Linux:</div><div class="line">cd ~/Arduino</div><div class="line"></div><div class="line"># Go to the libraries subdirectory</div><div class="line">cd libraries</div><div class="line"></div><div class="line"># Update the library:</div><div class="line">git pull</div></div><!-- fragment --><p><b>IMPORTANT:</b> Restart the Arduino IDE.</p>
-<h2>Libary installation with a ZIP</h2>
-<p>This method is not preferred, because updates should be manually installed.</p>
-<ol type="1">
-<li>Download <a href="https://github.com/Erriez/ErriezRotaryEncoderFullStep/archive/master.zip">the latest version here</a>.</li>
-<li>Open the Arduino IDE.</li>
-<li>Sketch | Include Library | Add .ZIP library...</li>
-<li>Browse to the downloaded ZIP.</li>
-<li>Restart the IDE. </li>
-</ol>
+<h2>Library installation</h2>
+<p>Please refer to the <a href="https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki">Wiki</a> page. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

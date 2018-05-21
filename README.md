@@ -1,4 +1,5 @@
 # 3 speed Rotary Encoder Full Step library for Arduino
+[![Build Status](https://travis-ci.org/Erriez/ErriezRotaryEncoderFullStep.svg?branch=master)](https://travis-ci.org/Erriez/ErriezRotaryEncoderFullStep)
 
 This is an optimized three speed Rotary Encoder library for Arduino which supports:
 
@@ -9,6 +10,8 @@ This is an optimized three speed Rotary Encoder library for Arduino which suppor
 * Single or multiple Rotary Encoders.
 * Optional Rotary button.
 * Pin state table in flash.
+
+![Rotary encoder](https://raw.githubusercontent.com/Erriez/ErriezRotaryEncoderFullStep/master/extras/RotaryEncoder.png)
 
 
 ## Full step / half step Rotary Encoders
@@ -52,9 +55,9 @@ The connection below can be used for polled and interrupts. An optional button p
 
 |    Rotary pin     | Arduino UNO/NANO/Mega2560/Leonardo board |
 | :---------------: | :--------------------------------------: |
-|         1         |                D2 (INT0)                 |
-|         2         |                D3 (INT1)                 |
-| Button (optional) |                    D4                    |
+|         1         |           DIGITAL pin 2 (INT0)           |
+|         2         |           DIGITAL pin 3 (INT1)           |
+| Button (optional) |              DIGITAL pin 4               |
 |        GND        |                   GND                    |
 
 
@@ -63,13 +66,13 @@ The connection below can be used for polled and interrupts. An optional button p
 
 Note that some ESP8266 pins mixes ESP8622 GPIO pins with Arduino digital pins. Connect a Rotary Encoder to the following pins which can be used with polled and interrupt examples:
 
-|    Rotary pin     | ESP8622 pin | Text on board<br />WeMos D1 R2 |
-| :---------------: | :---------: | :----------------------------: |
-|         1         |   GPIO13    |            D7 MOSI             |
-|         2         |   GPIO12    |            D6 MISO             |
-| Button (optional) |   GPIO14    |             D5 SCK             |
-|  LED (Not used)   |    GPIO2    |               D4               |
-|        GND        |     GND     |              GND               |
+|    Rotary pin     | ESP8622 pin | Text on board / WeMos D1 & R2 |
+| :---------------: | :---------: | :---------------------------: |
+|         1         |   GPIO13    |           D7 (MOSI)           |
+|         2         |   GPIO12    |           D6 (MISO)           |
+| Button (optional) |   GPIO14    |           D5 (SCK)            |
+|  LED (Not used)   |    GPIO2    |              D4               |
+|        GND        |     GND     |              GND              |
 
 **Note:** An external pull-up resistor is required when a pin does not have an internal pull-up.
 
@@ -186,88 +189,15 @@ void rotaryInterrupt()
 ```
 
 
+## Library dependencies
 
-## Libary installation using Git
+- No other libraries are used.
 
-`Git` is the preferred way to keep this library up to date, because the Arduino Library manager does not update as long as this library is not added to the official Arduino Library database.
+## Documentation
 
-### Install Git client for Windows
+- [Doxygen online HTML](https://Erriez.github.io/ErriezRotaryEncoderFullStep)
+- [Doxygen PDF](https://github.com/Erriez/ErriezRotaryEncoderFullStep/raw/master/docs/latex/refman.pdf)
 
-Install a [Git client for Windows](https://git-scm.com/download/win).
+## Library installation
 
-### Install Git client for Linux
-
-Open a command prompt and install a Git client for Linux, such as Debian Ubuntu:
-
-```shell
-sudo apt-get install git
-```
-
-### Get Arduino libraries directory
-
-This library must be installed in the Arduino Sketchbook library subdirectory.
-
-To retrieve the Arduino Sketchbook directory, open the Arduino IDE Preferences dialog box via:
-`File` | `Preferences` |`Settings tab` and copy the Sketchbook location.
-
-For example on:
-
-* Windows : `C:\Users\User\Documents\Arduino`
-* Linux: `/home/user/Arduino`
-
-### Clone this library
-
-Clone this library by opening a command prompt:
-
-* Windows:  (`Windows key + R`, Type `cmd` + `[ENTER]`)
-* Linux: Depends on your version.
-
-Then type:
-
-```shell
-# Change directory to the sketchbook directory as configured in the Arduino IDE:
-# Windows:
-cd C:\Users\User\Documents\Arduino
-# Linux:
-cd ~/Arduino
-
-# Go to the libraries subdirectory
-cd libraries
-
-# Run the git clone library once:
-git clone https://github.com/Erriez/ErriezRotaryEncoderFullStep.git
-```
-
-**IMPORTANT:** Restart the Arduino IDE.
-
-### Update this library
-
-Open a command prompt and type: 
-
-```shell
-# Change directory to the sketchbook directory as configured in the Arduino IDE:
-# Windows:
-cd C:\Users\User\Documents\Arduino
-# Linux:
-cd ~/Arduino
-
-# Go to the libraries subdirectory
-cd libraries
-
-# Update the library:
-git pull
-```
-
-**IMPORTANT:** Restart the Arduino IDE.
-
-
-
-## Libary installation with a ZIP
-
-This method is not preferred, because updates should be manually installed.
-
-1. Download [the latest version here](https://github.com/Erriez/ErriezRotaryEncoderFullStep/archive/master.zip).
-2. Open the Arduino IDE.
-3. Sketch | Include Library | Add .ZIP library...
-4. Browse to the downloaded ZIP.
-5. Restart the IDE.
+Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki) page.
