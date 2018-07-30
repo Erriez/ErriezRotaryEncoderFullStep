@@ -193,11 +193,18 @@ void rotaryInterrupt()
 
 - No other libraries are used.
 
+
 ## Documentation
 
 - [Doxygen online HTML](https://Erriez.github.io/ErriezRotaryEncoderFullStep)
 - [Doxygen PDF](https://github.com/Erriez/ErriezRotaryEncoderFullStep/raw/master/docs/latex/refman.pdf)
 
+
 ## Library installation
 
 Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki) page.
+
+
+## Other Arduino Libraries and Sketches from Erriez
+
+* [Erriez Libraries and Sketches](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches)
