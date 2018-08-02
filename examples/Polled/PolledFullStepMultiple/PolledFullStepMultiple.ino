@@ -23,7 +23,8 @@
  */
 
 /* Example multiple polled full step Rotary Encoders
- * Source: https://github.com/Erriez/ErriezRotaryEncoderFullStep
+ * Source:         https://github.com/Erriez/ErriezRotaryEncoderFullStep
+ * Documentation:  https://erriez.github.io/ErriezRotaryEncoderFullStep
  */
 
 #include <Arduino.h>

@@ -23,12 +23,11 @@
  */
 
 /*!
- * \file
- *     RotaryFullStep.cpp
- * \brief
- *     Three speed full step Rotary Encoder library for Arduino.
+ * \file RotaryFullStep.cpp
+ * \brief Three speed full step Rotary Encoder library for Arduino.
  * \details
- *     Source: https://github.com/Erriez/ErriezRotaryEncoderFullStep
+ *      Source:         https://github.com/Erriez/ErriezRotaryEncoderFullStep
+ *      Documentation:  https://erriez.github.io/ErriezRotaryEncoderFullStep
  */
 
 #if (defined(__AVR__))
