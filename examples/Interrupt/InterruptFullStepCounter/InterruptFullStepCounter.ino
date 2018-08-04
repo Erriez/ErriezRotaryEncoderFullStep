@@ -28,7 +28,7 @@
  */
 
 #include <Arduino.h>
-#include <RotaryFullStep.h>
+#include <ErriezRotaryFullStep.h>
 
 // Connect rotary pins to the DIGITAL pins of the Arduino board with interrupt
 // support:

@@ -10,7 +10,12 @@ rem git fetch
 rem git pull
 
 rem Build example(s)
-platformio ci --lib=".." --project-conf=platformio.ini ../examples/Benchmark/Benchmark.ino
-platformio ci --lib=".." --project-conf=platformio.ini ../examples/Example/Example.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Interrupt/InterruptFullStepCounter/InterruptFullStepCounter.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Polled/PolledFullStepButton/PolledFullStepButton.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino
+platformio ci --lib=".." --project-conf=platformio.ini ../examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino
 
 @pause

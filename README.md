@@ -104,8 +104,8 @@ The following examples are available:
 
 **Read rotary with polling**
 ```c++
-#include <RotaryFullStep.h>
-  
+#include <ErriezRotaryFullStep.h>
+
 // Connect rotary pins to the DIGITAL pins of the Arduino board
 #define ROTARY_PIN1   2
 #define ROTARY_PIN2   3
@@ -140,7 +140,7 @@ void loop()
 **Read rotary with interrupts**
 
 ```c++
-#include <RotaryFullStep.h>
+#include <ErriezRotaryFullStep.h>
 
 // Connect rotary pins to Arduino DIGITAL pins with interrupt support:
 //

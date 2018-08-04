@@ -23,15 +23,15 @@
  */
 
 /*!
- * \file RotaryFullStep.h
+ * \file ErriezRotaryFullStep.h
  * \brief Three speed full step Rotary Encoder library for Arduino
  * \details
  *      Source:         https://github.com/Erriez/ErriezRotaryEncoderFullStep
  *      Documentation:  https://erriez.github.io/ErriezRotaryEncoderFullStep
  */
 
-#ifndef ROTARY_FULL_STEP_H__
-#define ROTARY_FULL_STEP_H__
+#ifndef ERRIEZ_ROTARY_FULL_STEP_H_
+#define ERRIEZ_ROTARY_FULL_STEP_H_
 
 #include <Arduino.h>
 
@@ -54,4 +54,4 @@ private:
     uint8_t _sensitivity;
 };
 
-#endif // ROTARY_FULL_STEP_H__
+#endif // ERRIEZ_ROTARY_FULL_STEP_H_

@@ -23,7 +23,7 @@
  */
 
 /*!
- * \file RotaryFullStep.cpp
+ * \file ErriezRotaryFullStep.cpp
  * \brief Three speed full step Rotary Encoder library for Arduino.
  * \details
  *      Source:         https://github.com/Erriez/ErriezRotaryEncoderFullStep
@@ -36,7 +36,7 @@
 #include <pgmspace.h>
 #endif
 
-#include "RotaryFullStep.h"
+#include "ErriezRotaryFullStep.h"
 
 #define DIR_NONE  0x00      //!< No complete step yet
 #define DIR_CW    0x10      //!< Clockwise step
