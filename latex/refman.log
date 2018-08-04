@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.8.4)  4 AUG 2018 09:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.8.4)  4 AUG 2018 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1200,12 +1200,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 ) [10]
 Chapter 5.
-(./_rotary_full_step_8cpp.tex
+(./_erriez_rotary_full_step_8cpp.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
  []
 
-) (./_rotary_full_step_8h.tex
+) (./_erriez_rotary_full_step_8h.tex
 Underfull \hbox (badness 10000) in paragraph at lines 48--1
 []\T1/phv/m/n/10 Source[]: [][]\T1/pcr/bc/it/10 https[]://github.[]com/[]Erriez
 /[]Erriez[]Rotary[]Encoder[]Full[]Step[][] \T1/phv/m/n/10 Documentation[]
@@ -1236,7 +1236,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 161.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 161.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 161.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 8770064E91D45BA95F6FF09D499D6D35;4247.
+(rerunfilecheck)             Checksum: 1130CC6BB7658C4C18FF42F2644FF01F;4307.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1245,8 +1245,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 161.
  ) 
 Here is how much of TeX's memory you used:
  14742 strings out of 495028
- 209759 string characters out of 6181498
- 303904 words of memory out of 5000000
+ 209955 string characters out of 6181498
+ 303918 words of memory out of 5000000
  17632 multiletter control sequences out of 15000+600000
  63578 words of font info for 68 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -1261,7 +1261,7 @@ hvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (17 pages, 115917 bytes).
+Output written on refman.pdf (17 pages, 116023 bytes).
 PDF statistics:
  322 PDF objects out of 1000 (max. 8388607)
  290 compressed objects within 3 object streams

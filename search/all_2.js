@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getsensitivity',['getSensitivity',['../class_rotary_full_step.html#a55a1fce8a0b6436767f204ce16bc86fd',1,'RotaryFullStep']]]
+  ['erriezrotaryfullstep_2ecpp',['ErriezRotaryFullStep.cpp',['../_erriez_rotary_full_step_8cpp.html',1,'']]],
+  ['erriezrotaryfullstep_2eh',['ErriezRotaryFullStep.h',['../_erriez_rotary_full_step_8h.html',1,'']]]
 ];

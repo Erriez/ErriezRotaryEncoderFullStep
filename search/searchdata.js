@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "3dgrs",
+  0: "3degrs",
   1: "r",
-  2: "r",
+  2: "e",
   3: "grs",
   4: "dr",
   5: "3"
