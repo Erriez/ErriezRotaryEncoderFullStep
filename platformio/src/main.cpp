@@ -26,7 +26,6 @@
  * Source: https://github.com/Erriez/ErriezRotaryEncoderFullStep
  */
 
-#include <Arduino.h>
 #include <ErriezRotaryFullStep.h>
 
 // Connect rotary pins to the DIGITAL pins of the Arduino board with interrupt
