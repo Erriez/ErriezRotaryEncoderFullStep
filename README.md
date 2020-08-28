@@ -48,7 +48,7 @@ Both rotary pins must be connected to a DIGITAL pin with interrupt support, such
 
 The connection below can be used for polled and interrupts. An optional button pin can be connected to DIGITAL pin 4.
 
-![alt text](https://raw.githubusercontent.com/Erriez/ErriezRotaryEncoderFullStep/master/extras/FritzingRotary.png"3-pin Rotary Encoder Arduino connection")
+![3-pin Rotary Encoder Arduino connection](https://raw.githubusercontent.com/Erriez/ErriezRotaryEncoderFullStep/master/extras/FritzingRotary.png)
 
 |    Rotary pin     | Arduino UNO/NANO/Mega2560/Leonardo board |
 | :---------------: | :--------------------------------------: |
@@ -85,13 +85,13 @@ Note that some ESP8266 pins mixes ESP8622 GPIO pins with Arduino digital pins. C
 ## Examples
 
 The following examples are available:
-* Rotary | Interrupt | [InterruptFullStepBasic](https://github.com/Erriez/ErriezRotary/blob/master/examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino)
-* Rotary | Interrupt | [InterruptFullStepButton](https://github.com/Erriez/ErriezRotary/blob/master/examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino)
-* Rotary | Interrupt | [InterruptFullStepCounter](https://github.com/Erriez/ErriezRotary/blob/master/examples/Interrupt/InterruptFullStepCounter/InterruptFullStepCounter.ino)
-* Rotary | Polled | [PolledFullStepBasic](https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino)
-* Rotary | Polled | [PolledFullStepButton](https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepButton/PolledFullStepButton.ino)
-* Rotary | Polled | [PolledFullStepCounter](https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino)
-* Rotary | Polled | [PolledFullStepMultiple](https://github.com/Erriez/ErriezRotary/blob/master/examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino)
+* Rotary | Interrupt | [InterruptFullStepBasic](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Interrupt/InterruptFullStepBasic/InterruptFullStepBasic.ino)
+* Rotary | Interrupt | [InterruptFullStepButton](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Interrupt/InterruptFullStepButton/InterruptFullStepButton.ino)
+* Rotary | Interrupt | [InterruptFullStepCounter](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Interrupt/InterruptFullStepCounter/InterruptFullStepCounter.ino)
+* Rotary | Polled | [PolledFullStepBasic](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Polled/PolledFullStepBasic/PolledFullStepBasic.ino)
+* Rotary | Polled | [PolledFullStepButton](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Polled/PolledFullStepButton/PolledFullStepButton.ino)
+* Rotary | Polled | [PolledFullStepCounter](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Polled/PolledFullStepCounter/PolledFullStepCounter.ino)
+* Rotary | Polled | [PolledFullStepMultiple](https://github.com/Erriez/ErriezRotaryEncoderFullStep/blob/master/examples/Polled/PolledFullStepMultiple/PolledFullStepMultiple.ino)
 
 
 ## Documentation
