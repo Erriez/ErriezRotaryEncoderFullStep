@@ -96,6 +96,9 @@ void loop()
   }
 }
 
+#if defined(ARDUINO_ARCH_ESP8266) || defined(ARDUINO_ARCH_ESP32)
+ICACHE_RAM_ATTR
+#endif
 void rotaryInterrupt()
 {
   int rotaryState;
