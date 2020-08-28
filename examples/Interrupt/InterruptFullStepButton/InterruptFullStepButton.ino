@@ -74,7 +74,7 @@ void setup()
   while (!Serial) {
     ;
   }
-  Serial.println(F("Button example full step Rotary Encoder with interrupts"));
+  Serial.println(F("\nButton example full step Rotary Encoder with interrupts"));
 
   // Enable internal pull-up for the rotary button pin
   pinMode(ROTARY_BUTTON_PIN, INPUT_PULLUP);

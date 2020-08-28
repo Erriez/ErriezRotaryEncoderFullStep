@@ -61,7 +61,7 @@ void setup()
   while (!Serial) {
     ;
   }
-  Serial.println(F("Example multiple polled full step Rotary Encoders"));
+  Serial.println(F("\nExample multiple polled full step Rotary Encoders"));
   Serial.println(F("Press the rotary button to change sensitivity"));
 
   // Enable internal pull-up for the rotary button pins
