@@ -40,23 +40,23 @@ RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);
 
 void setup()
 {
-  // Initialize Serial port
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("\nBasic example polled full step Rotary Encoder"));
+    // Initialize Serial port
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("\nBasic example polled full step Rotary Encoder"));
 }
 
 void loop()
 {
-  int rotaryState;
+    int rotaryState;
 
-  // Read rotary state
-  rotaryState = rotary.read();
+    // Read rotary state
+    rotaryState = rotary.read();
 
-  // Print count value when rotary changed
-  if ((rotaryState > 0) || (rotaryState < 0)) {
-    Serial.println(rotaryState);
-  }
+    // Print count value when rotary changed
+    if ((rotaryState > 0) || (rotaryState < 0)) {
+        Serial.println(rotaryState);
+    }
 }

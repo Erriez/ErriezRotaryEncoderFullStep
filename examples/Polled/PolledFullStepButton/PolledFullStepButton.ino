@@ -52,53 +52,54 @@ RotaryFullStep rotary(ROTARY_PIN1, ROTARY_PIN2);
 int count = 0;
 int countLast = 0;
 
+
 void setup()
 {
-  // Initialize Serial port
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("\nButton example polled full step Rotary Encoder"));
+    // Initialize Serial port
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("\nButton example polled full step Rotary Encoder"));
 
-  // Enable internal pull-up for the rotary button pin
-  pinMode(ROTARY_BUTTON_PIN, INPUT_PULLUP);
+    // Enable internal pull-up for the rotary button pin
+    pinMode(ROTARY_BUTTON_PIN, INPUT_PULLUP);
 }
 
 void loop()
 {
-  int rotaryState;
+    int rotaryState;
 
-  if (digitalRead(ROTARY_BUTTON_PIN) == 0) {
-    // Reset count when rotary button is down
-    count = 0;
-  } else {
-    // Read rotary state (Counter clockwise) -2, -1, 0, 1, 2 (Clockwise)
-    rotaryState = rotary.read();
-
-    // Count up or down by using rotary speed
-    if (rotaryState == 0) {
-      // No change
-      return;
-    } else if (abs(rotaryState) >= 2) {
-      count += rotaryState * 2;
+    if (digitalRead(ROTARY_BUTTON_PIN) == 0) {
+        // Reset count when rotary button is down
+        count = 0;
     } else {
-      count += rotaryState;
+        // Read rotary state (Counter clockwise) -2, -1, 0, 1, 2 (Clockwise)
+        rotaryState = rotary.read();
+
+        // Count up or down by using rotary speed
+        if (rotaryState == 0) {
+            // No change
+            return;
+        } else if (abs(rotaryState) >= 2) {
+            count += rotaryState * 2;
+        } else {
+            count += rotaryState;
+        }
+
+        // Limit count to a minimum and maximum value
+        if (count > 100) {
+            count = 100;
+        }
+        if (count < 0) {
+            count = 0;
+        }
     }
 
-    // Limit count to a minimum and maximum value
-    if (count > 100) {
-      count = 100;
+    // Print count value when count value changed
+    if (countLast != count) {
+        countLast = count;
+        Serial.print(F("Count: "));
+        Serial.println(count);
     }
-    if (count < 0) {
-      count = 0;
-    }
-  }
-
-  // Print count value when count value changed
-  if (countLast != count) {
-    countLast = count;
-    Serial.print(F("Count: "));
-    Serial.println(count);
-  }
 }

@@ -54,83 +54,84 @@ int pinStateLast[NUM_ROTARIES];
 // Forward declarations
 void handleRotaryButton(uint8_t rotaryId);
 
+
 void setup()
 {
-  // Initialize Serial port
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("\nExample multiple polled full step Rotary Encoders"));
-  Serial.println(F("Press the rotary button to change sensitivity"));
+    // Initialize Serial port
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("\nExample multiple polled full step Rotary Encoders"));
+    Serial.println(F("Press the rotary button to change sensitivity"));
 
-  // Enable internal pull-up for the rotary button pins
-  pinMode(ROTARY1_BUTTON_PIN, INPUT_PULLUP);
-  pinMode(ROTARY2_BUTTON_PIN, INPUT_PULLUP);
+    // Enable internal pull-up for the rotary button pins
+    pinMode(ROTARY1_BUTTON_PIN, INPUT_PULLUP);
+    pinMode(ROTARY2_BUTTON_PIN, INPUT_PULLUP);
 }
 
 void loop()
 {
-  // Handle multiple Rotary Encoders
-  for (uint8_t i = 0; i < NUM_ROTARIES; i++) {
-    // Handle rotary button
-    handleRotaryButton(i);
+    // Handle multiple Rotary Encoders
+    for (uint8_t i = 0; i < NUM_ROTARIES; i++) {
+        // Handle rotary button
+        handleRotaryButton(i);
 
-    // Read rotary state
-    int rotaryState = rotaries[i].read();
+        // Read rotary state
+        int rotaryState = rotaries[i].read();
 
-    // Print count value when rotary changed
-    if ((rotaryState > 0) || (rotaryState < 0)) {
-      Serial.print(F("Rotary "));
-      Serial.print(i + 1);
-      Serial.print(F(": "));
-      Serial.println(rotaryState);
+        // Print count value when rotary changed
+        if ((rotaryState > 0) || (rotaryState < 0)) {
+            Serial.print(F("Rotary "));
+            Serial.print(i + 1);
+            Serial.print(F(": "));
+            Serial.println(rotaryState);
+        }
     }
-  }
 }
 
 void handleRotaryButton(uint8_t rotaryId)
 {
-  int pinState;
+    int pinState;
 
-  // Read Rotary button state
-  switch (rotaryId) {
-    case 0:
-      pinState = digitalRead(ROTARY1_BUTTON_PIN);
-      break;
-    case 1:
-      pinState = digitalRead(ROTARY2_BUTTON_PIN);
-      break;
-    default:
-      return;
-  }
-
-  // Check if Rotary button state changed
-  if (pinStateLast[rotaryId] != pinState) {
-    pinStateLast[rotaryId] = pinState;
-
-    // Check if button is down
-    if (pinState == 0) {
-      uint8_t sensitivity;
-
-      // Get current Rotary sensitivity
-      sensitivity = rotaries[rotaryId].getSensitivity();
-
-      // Increment sensitivity value in steps of 50
-      if (sensitivity >= 250) {
-        sensitivity = 0;
-      } else {
-        sensitivity += 50;
-      }
-
-      // Print new sensitivity value on Serial
-      Serial.print(F("Rotary "));
-      Serial.print(rotaryId + 1);
-      Serial.print(F(" sensitivity: "));
-      Serial.println(sensitivity);
-
-      // Set new Rotary sensitivity value
-      rotaries[rotaryId].setSensitivity(sensitivity);
+    // Read Rotary button state
+    switch (rotaryId) {
+        case 0:
+            pinState = digitalRead(ROTARY1_BUTTON_PIN);
+            break;
+        case 1:
+            pinState = digitalRead(ROTARY2_BUTTON_PIN);
+            break;
+        default:
+            return;
     }
-  }
+
+    // Check if Rotary button state changed
+    if (pinStateLast[rotaryId] != pinState) {
+        pinStateLast[rotaryId] = pinState;
+
+        // Check if button is down
+        if (pinState == 0) {
+            uint8_t sensitivity;
+
+            // Get current Rotary sensitivity
+            sensitivity = rotaries[rotaryId].getSensitivity();
+
+            // Increment sensitivity value in steps of 50
+            if (sensitivity >= 250) {
+                sensitivity = 0;
+            } else {
+                sensitivity += 50;
+            }
+
+            // Print new sensitivity value on Serial
+            Serial.print(F("Rotary "));
+            Serial.print(rotaryId + 1);
+            Serial.print(F(" sensitivity: "));
+            Serial.println(sensitivity);
+
+            // Set new Rotary sensitivity value
+            rotaries[rotaryId].setSensitivity(sensitivity);
+        }
+    }
 }

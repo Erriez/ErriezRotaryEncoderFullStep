@@ -53,21 +53,21 @@ void rotaryInterrupt();
 
 void setup()
 {
-  // Initialize Serial port
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("\nBasic example full step Rotary Encoder with interrupts"));
+    // Initialize Serial port
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("\nBasic example full step Rotary Encoder with interrupts"));
 
-  // Initialize pin change interrupt on both rotary encoder pins
-  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN1), rotaryInterrupt, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(ROTARY_PIN2), rotaryInterrupt, CHANGE);
+    // Initialize pin change interrupt on both rotary encoder pins
+    attachInterrupt(digitalPinToInterrupt(ROTARY_PIN1), rotaryInterrupt, CHANGE);
+    attachInterrupt(digitalPinToInterrupt(ROTARY_PIN2), rotaryInterrupt, CHANGE);
 }
 
 void loop()
 {
-  // Wait for interrupt
+    // Wait for interrupt
 }
 
 #if defined(ARDUINO_ARCH_ESP8266) || defined(ARDUINO_ARCH_ESP32)
@@ -75,13 +75,13 @@ ICACHE_RAM_ATTR
 #endif
 void rotaryInterrupt()
 {
-  int rotaryState;
+    int rotaryState;
 
-  // Read rotary state
-  rotaryState = rotary.read();
+    // Read rotary state
+    rotaryState = rotary.read();
 
-  // Print count value when count value changed
-  if ((rotaryState > 0) || (rotaryState < 0)) {
-    Serial.println(rotaryState);
-  }
+    // Print count value when count value changed
+    if ((rotaryState > 0) || (rotaryState < 0)) {
+        Serial.println(rotaryState);
+    }
 }
