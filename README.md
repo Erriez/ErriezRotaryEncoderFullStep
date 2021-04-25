@@ -28,7 +28,7 @@ Connect the two rotary pins to the DIGITAL pins of an Arduino board.
 
 A third rotary button pin is not used in the Rotary library, but can be used in the sketch.
 
-Tested with Arduino IDE v1.8.5 on hardware:
+Tested with Arduino IDE v1.8.13 on hardware:
 
 * Arduino UNO
 * Arduino Nano
@@ -37,6 +37,12 @@ Tested with Arduino IDE v1.8.5 on hardware:
 * Arduino Mega or Mega2560
 * Arduino Leonardo
 * WeMos D1 R2 & mini (ESP8266)
+
+Other supported targets:
+* ESP8266
+* ESP32
+* SAMD21
+* STM32F1
 
 
 ### Interrupts
